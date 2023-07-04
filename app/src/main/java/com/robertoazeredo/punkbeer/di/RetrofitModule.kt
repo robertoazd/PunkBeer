@@ -21,6 +21,8 @@ object RetrofitModule {
 
     private const val API_URL = BuildConfig.API_URL
 
+    @Singleton
+    @Provides
     fun provideOkHttpClient(): OkHttpClient {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.level = if (BuildConfig.DEBUG) {
