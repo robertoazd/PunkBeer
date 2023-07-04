@@ -80,6 +80,9 @@ dependencies {
     def lifecycle_version = "2.6.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
+    //Activity
+    implementation "androidx.activity:activity-ktx:1.7.2"
+
     // Tesst
     testImplementation 'junit:junit:4.13.2'
 
