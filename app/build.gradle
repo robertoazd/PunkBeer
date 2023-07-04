@@ -76,6 +76,10 @@ dependencies {
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.14.1'
 
+    //Lifecycle
+    def lifecycle_version = "2.6.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
     // Tesst
     testImplementation 'junit:junit:4.13.2'
 
