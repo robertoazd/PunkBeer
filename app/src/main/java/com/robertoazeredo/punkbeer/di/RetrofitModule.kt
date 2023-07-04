@@ -1,6 +1,7 @@
 package com.robertoazeredo.punkbeer.di
 
 import com.robertoazeredo.punkbeer.BuildConfig
+import com.robertoazeredo.punkbeer.data.api.PunkBeerApi
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -11,6 +12,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -48,5 +50,13 @@ object RetrofitModule {
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build()
+    }
+
+    @Singleton
+    @Provides
+    fun providePunkBeerApi(
+        retrofit: Retrofit
+    ): PunkBeerApi {
+        return retrofit.create(PunkBeerApi::class.java)
     }
 }
