@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.robertoazeredo.punkbeer.R
 import com.robertoazeredo.punkbeer.databinding.FragmentBeersBinding
@@ -30,6 +31,25 @@ class BeersFragment : Fragment() {
         super.onViewCreated(view , savedInstanceState)
         if (viewModel.beers.value == null) {
             viewModel.getBeers()
+        }
+
+        setupObervable()
+    }
+
+    private fun setupObervable() {
+        viewModel.beers.observe(viewLifecycleOwner) { beers ->
+            if (!beers.isNullOrEmpty()) {
+                println("Adapter")
+            } else {
+                Toast.makeText(context, "Lista vazia", Toast.LENGTH_SHORT).show()
+            }
+            binding.progressBar.visibility = View.INVISIBLE
+        }
+
+        viewModel.error.observe(viewLifecycleOwner) { error ->
+            Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+
+            binding.progressBar.visibility = View.INVISIBLE
         }
     }
 }
