@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.robertoazeredo.punkbeer.R
 import com.robertoazeredo.punkbeer.databinding.FragmentBeersBinding
+import com.robertoazeredo.punkbeer.ui.adapter.BeersAdapter
 import com.robertoazeredo.punkbeer.ui.viewmodel.BeersViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,6 +18,10 @@ class BeersFragment : Fragment() {
 
     private lateinit var binding: FragmentBeersBinding
     private val viewModel: BeersViewModel by viewModels()
+
+    private val adapter by lazy {
+        BeersAdapter()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater , container: ViewGroup? ,
@@ -39,7 +44,7 @@ class BeersFragment : Fragment() {
     private fun setupObservable() {
         viewModel.beers.observe(viewLifecycleOwner) { beers ->
             if (!beers.isNullOrEmpty()) {
-                println("Adapter")
+                adapter.insertBeers(beers)
             } else {
                 Toast.makeText(context, "Lista vazia", Toast.LENGTH_SHORT).show()
             }

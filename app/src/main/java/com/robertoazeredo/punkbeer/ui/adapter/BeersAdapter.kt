@@ -24,7 +24,7 @@ class BeersAdapter(
     }
 
     override fun getItemCount() = beers.size
-    
+
     fun insertBeers(beers: List<BeerResponse>) {
         notifyItemRangeRemoved(0, this.beers.size)
         this.beers = beers
