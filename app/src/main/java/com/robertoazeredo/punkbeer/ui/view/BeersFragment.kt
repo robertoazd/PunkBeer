@@ -33,10 +33,10 @@ class BeersFragment : Fragment() {
             viewModel.getBeers()
         }
 
-        setupObervable()
+        setupObservable()
     }
 
-    private fun setupObervable() {
+    private fun setupObservable() {
         viewModel.beers.observe(viewLifecycleOwner) { beers ->
             if (!beers.isNullOrEmpty()) {
                 println("Adapter")
