@@ -35,7 +35,7 @@
         tools:visibility="invisible" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rc_cards"
+        android:id="@+id/rc_beers"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"

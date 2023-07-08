@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import com.robertoazeredo.punkbeer.R
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.SnapHelper
 import com.robertoazeredo.punkbeer.databinding.FragmentBeersBinding
 import com.robertoazeredo.punkbeer.ui.adapter.BeersAdapter
 import com.robertoazeredo.punkbeer.ui.viewmodel.BeersViewModel
@@ -38,7 +39,22 @@ class BeersFragment : Fragment() {
             viewModel.getBeers()
         }
 
+        setupLayout()
+        setupListeners()
         setupObservable()
+    }
+
+    private fun setupLayout() {
+        binding.rcBeers.adapter = adapter
+
+        val snapHelper: SnapHelper = LinearSnapHelper()
+        snapHelper.attachToRecyclerView(binding.rcBeers)
+    }
+
+    private fun setupListeners() {
+        adapter.itemClick = { beer ->
+            println("Criar fragment de detalhes da beer")
+        }
     }
 
     private fun setupObservable() {

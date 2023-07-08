@@ -8,7 +8,7 @@ import com.robertoazeredo.punkbeer.data.model.BeerResponse
 import com.robertoazeredo.punkbeer.databinding.ItemBeerBinding
 
 class BeersAdapter(
-    val itemClick: (beer: BeerResponse) -> Unit = {}
+    var itemClick: (beer: BeerResponse) -> Unit = {}
 ): RecyclerView.Adapter<BeersAdapter.BeersViewHolder>() {
 
     private var beers: List<BeerResponse> = emptyList()
