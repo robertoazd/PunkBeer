@@ -10,4 +10,9 @@
         android:name="com.robertoazeredo.punkbeer.ui.view.BeersFragment"
         android:label="fragment_beers"
         tools:layout="@layout/fragment_beers" />
+    <fragment
+        android:id="@+id/beerDetailFragment"
+        android:name="com.robertoazeredo.punkbeer.ui.view.BeerDetailFragment"
+        android:label="fragment_beer_detail"
+        tools:layout="@layout/fragment_beer_detail" />
 </navigation>
