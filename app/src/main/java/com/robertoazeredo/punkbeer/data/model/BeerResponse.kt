@@ -1,7 +1,10 @@
 package com.robertoazeredo.punkbeer.data.model
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class BeerResponse(
 
     @Json(name = "id")
@@ -16,4 +19,4 @@ data class BeerResponse(
     val description: String?,
     @Json(name = "image_url")
     val imageUrl: String?
-)
+) : Parcelable
