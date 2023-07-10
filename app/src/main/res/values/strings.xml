@@ -5,5 +5,5 @@
     <string name="tagline">Tagline: %s</string>
     <string name="first_brewed_format">First Brewed: %s</string>
     <string name="description">Description: %s</string>
-    
+
 </resources>
