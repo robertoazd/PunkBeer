@@ -18,5 +18,9 @@
         android:id="@+id/beerDetailFragment"
         android:name="com.robertoazeredo.punkbeer.ui.view.BeerDetailFragment"
         android:label="fragment_beer_detail"
-        tools:layout="@layout/fragment_beer_detail" />
+        tools:layout="@layout/fragment_beer_detail" >
+        <argument
+            android:name="beer"
+            app:argType="com.robertoazeredo.punkbeer.data.model.BeerResponse" />
+    </fragment>
 </navigation>

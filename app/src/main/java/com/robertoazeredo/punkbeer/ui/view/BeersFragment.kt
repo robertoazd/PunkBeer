@@ -55,7 +55,7 @@ class BeersFragment : Fragment() {
     private fun setupListeners() {
         adapter.itemClick = { beer ->
             findNavController().navigate(
-                BeersFragmentDirections.actionBeersFragmentToBeerDetailFragment()
+                BeersFragmentDirections.actionBeersFragmentToBeerDetailFragment(beer)
             )
         }
     }
