@@ -13,8 +13,8 @@ data class BeerResponse(
     val name: String?,
     @Json(name = "tagline")
     val tagline: String?,
-    @Json(name = "frist_brewed")
-    val fristBrewed: String?,
+    @Json(name = "first_brewed")
+    val firstBrewed: String?,
     @Json(name = "description")
     val description: String?,
     @Json(name = "image_url")
