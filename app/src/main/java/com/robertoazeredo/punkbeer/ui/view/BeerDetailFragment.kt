@@ -6,18 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
-import com.robertoazeredo.punkbeer.R
+import com.robertoazeredo.punkbeer.databinding.FragmentBeerDetailBinding
 
 class BeerDetailFragment : Fragment() {
 
     private val args: BeerDetailFragmentArgs by navArgs()
+    private lateinit var binding: FragmentBeerDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater , container: ViewGroup? ,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_beer_detail , container , false)
+        binding = FragmentBeerDetailBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View , savedInstanceState: Bundle?) {
