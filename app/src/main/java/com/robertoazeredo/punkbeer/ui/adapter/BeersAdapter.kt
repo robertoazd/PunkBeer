@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.robertoazeredo.punkbeer.R
 import com.robertoazeredo.punkbeer.data.model.BeerResponse
 import com.robertoazeredo.punkbeer.databinding.ItemBeerBinding
 
@@ -37,6 +38,12 @@ class BeersAdapter(
 
         fun bind(beer: BeerResponse, itemClick: (beer: BeerResponse) -> Unit = {}) {
             Glide.with(binding.root.context).load(beer.imageUrl).into(binding.ivBeer)
+
+            binding.tvBeerName.text = beer.name
+
+            binding.tvFirstBrewed.text = binding.root.context.getString(
+                R.string.first_brewed_format, beer.firstBrewed)
+
             binding.root.setOnClickListener {
                 itemClick.invoke(beer)
             }
