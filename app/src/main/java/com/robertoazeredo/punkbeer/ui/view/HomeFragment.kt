@@ -22,7 +22,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupListeners() {
-        
+
     }
 
 }
