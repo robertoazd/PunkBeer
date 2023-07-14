@@ -3,8 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/beersFragment">
+    app:startDestination="@id/homeFragment">
 
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.robertoazeredo.punkbeer.ui.view.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_beersFragment"
+            app:destination="@id/beersFragment" />
+    </fragment>
     <fragment
         android:id="@+id/beersFragment"
         android:name="com.robertoazeredo.punkbeer.ui.view.BeersFragment"
