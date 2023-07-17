@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.robertoazeredo.punkbeer.R
+import androidx.navigation.fragment.findNavController
 import com.robertoazeredo.punkbeer.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -21,8 +21,15 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    private fun setupListeners() {
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupListeners()
     }
 
+    private fun setupListeners() {
+        binding.buttonBeers.setOnClickListener {
+            findNavController().navigate(HomeFragmentDirections
+                .actionHomeFragmentToBeersFragment())
+        }
+    }
 }
