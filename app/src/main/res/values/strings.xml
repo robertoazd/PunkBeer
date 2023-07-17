@@ -5,8 +5,19 @@
     <string name="tagline">Tagline: %s</string>
     <string name="first_brewed_format">First Brewed: %s</string>
     <string name="description">Description: %s</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="beers">Beers</string>
+
+    <string name="try_again">Tentar novamente</string>
+
+    <string name="error_no_data">We couldn\'t find any news in this section.</string>
+    <string name="error_unknown">Oops, something went wrong. Please try again later.</string>
+    <string name="error_400">Invalid request.</string>
+    <string name="error_401">Failed to authenticate with the server.</string>
+    <string name="error_403">Authenticated but does not have permission to access the requested resource.</string>
+    <string name="error_404">The requested resource does not exist.</string>
+    <string name="error_500">A generic error occurred on the server.</string>
+    <string name="error_503">The requested service is not available.</string>
 
 </resources>
