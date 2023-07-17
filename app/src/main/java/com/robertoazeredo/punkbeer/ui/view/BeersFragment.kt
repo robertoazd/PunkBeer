@@ -1,6 +1,8 @@
 package com.robertoazeredo.punkbeer.ui.view
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -58,11 +60,20 @@ class BeersFragment : Fragment() {
                 BeersFragmentDirections.actionBeersFragmentToBeerDetailFragment(beer)
             )
         }
+        binding.layoutError.buttonTryAgain.setOnClickListener {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.layoutError.root.visibility = View.INVISIBLE
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                viewModel.getBeers()
+            }, 3000)
+        }
     }
 
     private fun setupObservable() {
         viewModel.beers.observe(viewLifecycleOwner) { beers ->
             if (!beers.isNullOrEmpty()) {
+                binding.rcBeers.visibility = View.VISIBLE
                 adapter.insertBeers(beers)
             } else {
                 Toast.makeText(context, "Lista vazia", Toast.LENGTH_SHORT).show()
@@ -71,9 +82,13 @@ class BeersFragment : Fragment() {
         }
 
         viewModel.error.observe(viewLifecycleOwner) { error ->
-            Toast.makeText(context, error, Toast.LENGTH_SHORT).show()
+            binding.layoutError.tvMessage.text = error
 
             binding.progressBar.visibility = View.INVISIBLE
+            binding.rcBeers.visibility = View.INVISIBLE
+
+            binding.layoutError.root.visibility = View.VISIBLE
+
         }
     }
 }
