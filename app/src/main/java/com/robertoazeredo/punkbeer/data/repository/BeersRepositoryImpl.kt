@@ -1,13 +1,17 @@
 package com.robertoazeredo.punkbeer.data.repository
 
+import android.content.Context
+import com.robertoazeredo.punkbeer.R
 import com.robertoazeredo.punkbeer.data.api.PunkBeerApi
 import com.robertoazeredo.punkbeer.data.api.ResultApi
 import com.robertoazeredo.punkbeer.data.model.BeerResponse
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class BeersRepositoryImpl @Inject constructor(
+    @ApplicationContext private val context: Context,
     private val punkBeerApi: PunkBeerApi
 ) : BeersRepository {
 
@@ -20,13 +24,25 @@ class BeersRepositoryImpl @Inject constructor(
                     if (body != null) {
                         ResultApi.Success(body)
                     } else {
-                        ResultApi.Error("Error no data")
+                        val error = context.getString(R.string.error_no_data)
+                        ResultApi.Error(error)
                     }
                 } else {
-                    ResultApi.Error("Generic error")
+                    val errorMessageId = when (response.code()) {
+                        400 -> R.string.error_400
+                        401 -> R.string.error_401
+                        403 -> R.string.error_403
+                        404 -> R.string.error_404
+                        500 -> R.string.error_500
+                        503 -> R.string.error_503
+                        else -> R.string.error_unknown
+                    }
+                    val errorMessage = context.getString(errorMessageId)
+                    ResultApi.Error(errorMessage)
                 }
             } catch (throwable: Throwable) {
-                ResultApi.Error("Error unknown")
+                val error = context.getString(R.string.error_unknown)
+                ResultApi.Error(error)
             }
         }
     }
